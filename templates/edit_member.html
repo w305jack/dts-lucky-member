@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Edit Member
+{% endblock %}
+
+{% block content %}
+
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+
+            <div class="card">
+                <div class="card-title">
+                    <h4>Edit Member</h4>
+                </div>
+                <div class="card-body">
+                    <div class="basic-form">
+                        <form method="post" action="/edit-member?id={{ member['id'] }}">
+                            <div class="form-group">
+                                <p class="text-muted m-b-15 f-s-12">Name</p>
+                                <input name="name" value="{{ member['name'] }}" type="text" class="form-control input-default" required="required">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

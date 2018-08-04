@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Members
+{% endblock %}
+
+{% block content %}
+
+    {% for member in members %}
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-title">
+                        <h4>{{ member['name'] }}</h4>
+                    </div>
+                    <div class="button-list">
+                        <div class="btn-group">
+                            <a href="/edit-member?id={{ member['id'] }}" class="btn btn-primary">Edit</a>
+                            <a href="/delete-member?id={{ member['id'] }}" onclick="return confirm('delete?')"
+                               class="btn btn-danger">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% endfor %}
+
+    <div class="row justify-content-center">
+        <div class="col-lg-6" style="margin-bottom: 50px;">
+            <a href="/add-member" class="btn btn-primary btn-block">New Member</a>
+        </div>
+    </div>
+
+{% endblock %}
