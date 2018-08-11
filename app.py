@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect
 from database import db_session, init_db
 from sqlalchemy import desc
+import os
 
 from models.member import Members
 import datetime
@@ -92,5 +93,6 @@ def datetimeformat(value, format='%H:%M / %d-%m-%Y'):
 app.jinja_env.filters['datetime'] = datetimeformat
 
 if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 5000))
     app.jinja_env.auto_reload = True
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=port)
