@@ -86,6 +86,11 @@ def delete_restaurant():
     return redirect('/members')
 
 
+@app.route('/hello')
+def hello():
+    return 'hello world'
+
+
 def datetimeformat(value, format='%H:%M / %d-%m-%Y'):
     return value.strftime(format)
 
