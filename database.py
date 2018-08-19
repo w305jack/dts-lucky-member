@@ -5,7 +5,9 @@ import os
 
 current_dir = os.path.dirname(__file__)
 
-engine = create_engine('sqlite:////{}/luckymember.db'.format(current_dir), convert_unicode=True)
+database_url = os.environ.get('DATABASE_URL')
+
+engine = create_engine('{}'.format(database_url), convert_unicode=True)
 db_session = scoped_session(sessionmaker(autocommit=False,
                                          autoflush=False,
                                          expire_on_commit=False,
@@ -13,6 +15,6 @@ db_session = scoped_session(sessionmaker(autocommit=False,
 Base = declarative_base()
 Base.query = db_session.query_property()
 
+
 def init_db():
     Base.metadata.create_all(bind=engine)
-
